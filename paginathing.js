@@ -202,7 +202,8 @@
     ulClass: 'pagination',
     liClass: 'page',
     activeClass: 'active',
-    disabledClass: 'disable'
+    disabledClass: 'disable',
+    insertAfter: null
   }
 
 }(jQuery, window, document));

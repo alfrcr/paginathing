@@ -202,7 +202,7 @@
     ulClass: 'pagination',
     liClass: 'page',
     activeClass: 'active',
-    disabledClass: 'disable',
+    disabledClass: 'disabled',
     insertAfter: null
   }
 

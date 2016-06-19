@@ -1,6 +1,8 @@
 # Paginathing (support BootstrapCSS)
 "Paginate everything"
 
+a jQuery tool for paginate your html elements.
+
 ### Requirements
 - jQuery 
 
@@ -24,7 +26,10 @@ Your html markup (example)
 </div>
 ```
 
+#### Simplest way
+`$('.your-element').paginathing();`
 
+#### With the options
 ```html
 <!-- jQuery first -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -42,7 +47,7 @@ Your html markup (example)
 ```
 
 ### Available Options
-```json
+```js
   perPage: 10, // show item per page
   limitPagination: false, // false or number. Limiting your pagination number.
   prevNext: true, // enable previous and next button
@@ -55,5 +60,6 @@ Your html markup (example)
   ulClass: 'pagination', // extend default ul class
   liClass: 'page', // extend li class
   activeClass: 'active', // active link class
-  disabledClass: 'disable' // disabled link class
+  disabledClass: 'disable' // disabled link class,
+  insertAfter: null //class or id (eg: .element or #element). append the paginator after certain element
 ```

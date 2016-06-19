@@ -1,5 +1,5 @@
 # Paginathing
-#### Paginate Everything
+#### Paginate Everything (support BootstrapCSS)
 
 a dead-simple jQuery plugin for paginate your html elements.
 

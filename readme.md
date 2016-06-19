@@ -1,4 +1,4 @@
-## Paginathing (support BootstrapCSS)
+# Paginathing (support BootstrapCSS)
 "Paginate everything"
 
 ### Requirements
@@ -7,7 +7,7 @@
 ### Usage
 
 Your html markup (example)
-```
+```html
 <div class="panel panel-primary">
 	<div class="panel-heading">
 		<h3 class="panel-title">List of item.</h3>
@@ -25,7 +25,7 @@ Your html markup (example)
 ```
 
 
-```
+```html
 <!-- jQuery first -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- paginathing.js -->
@@ -42,7 +42,7 @@ Your html markup (example)
 ```
 
 ### Available Options
-```
+```json
   perPage: 10, // show item per page
   limitPagination: false, // false or number. Limiting your pagination number.
   prevNext: true, // enable previous and next button

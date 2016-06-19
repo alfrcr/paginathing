@@ -1,12 +1,15 @@
-# Paginathing (support BootstrapCSS)
-"Paginate everything"
+# Paginathing
+#### Paginate Everything
 
-a jQuery tool for paginate your html elements.
+a dead-simple jQuery plugin for paginate your html elements.
 
-### Requirements
+How the plugin's work?
+Originally paginathing.js hide all your selector's children dom. Then shows the dom based on active pages by using jQuery .show()
+
+## Requirements
 - jQuery 
 
-### Usage
+## Usage
 
 Your html markup (example)
 ```html
@@ -26,27 +29,28 @@ Your html markup (example)
 </div>
 ```
 
-#### Simplest way
-`$('.your-element').paginathing();`
-
-#### With the options
+#### Include jQuery & paginathing first
 ```html
 <!-- jQuery first -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <!-- paginathing.js -->
 <script type="text/javascript" src="paginathing.js"></script>
+```
+
+#### Initialize
+```html
 <!-- Your script -->
 <script type="text/javascript">
 	jQuery(document).ready(function($){
 		$('.list-group').paginathing({
-	    perPage: 2,
-	    containerClass: 'panel-footer'
+	    		perPage: 2,
+	    		containerClass: 'panel-footer'
 		})
 	});
 </script>
 ```
 
-### Available Options
+## Available Options
 ```js
   perPage: 10, // show item per page
   limitPagination: false, // false or number. Limiting your pagination number.

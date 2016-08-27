@@ -3,7 +3,7 @@
  * Paginate Everything
  * 
  * @author Alfred Crosby <https://github.com/alfredcrosby>
- * Inspired by http://esimakin.github.io/twbs-pagination/
+ * Inspired from http://esimakin.github.io/twbs-pagination/
  */
  
 ;(function($, window, document) {

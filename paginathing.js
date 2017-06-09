@@ -1,11 +1,11 @@
 /**
  * jQuery Paginathing
  * Paginate Everything
- * 
+ *
  * @author Alfred Crosby <https://github.com/alfredcrosby>
  * Inspired from http://esimakin.github.io/twbs-pagination/
  */
- 
+
 ;(function($, window, document) {
 
   'use strict';
@@ -19,7 +19,7 @@
     this.totalItems = this.el.children().length;
     this.totalPages = Math.max(
       Math.ceil(this.totalItems / this.options.perPage),
-      options.limitPagination
+      this.options.limitPagination
     );
     this.container = $('<nav></nav>').addClass(this.options.containerClass);
     this.ul = $('<ul></ul>').addClass(this.options.ulClass);
@@ -27,7 +27,7 @@
     this.show(this.startPage);
 
     return this;
-  }
+  };
 
   Paginator.prototype = {
 
@@ -53,12 +53,11 @@
     buildPagination: function() {
       var _self = this;
       var pagination = [];
-      var prev = _self.currentPage - 1 < _self.startPage ? _self.startPage : _self.currentPage - 1; 
-      var next = _self.currentPage + 1 > _self.totalPages ? _self.totalPages : _self.currentPage + 1; 
+      var prev = _self.currentPage - 1 < _self.startPage ? _self.startPage : _self.currentPage - 1;
+      var next = _self.currentPage + 1 > _self.totalPages ? _self.totalPages : _self.currentPage + 1;
 
       var start, end;
       var limit = _self.options.limitPagination;
-      var interval = 2;
 
       if(limit) {
         if(_self.currentPage <= Math.ceil(limit / 2) + 1) {
@@ -119,7 +118,7 @@
 
       _self.el.children().hide();
       _self.el.children().slice(startAt, endAt).show();
-      
+
       // Manage active state
       _self.ul.children().each(function() {
         var _li = $(this);
@@ -180,15 +179,13 @@
       _self.render(page);
       _self.handle();
     }
-  }
+  };
 
   $.fn.paginathing = function(options) {
     var _self = this;
-    var settings = (typeof options === 'object') ? options : {};
 
     return _self.each(function(){
-      var paginate = new Paginator(this, options);
-      return paginate;
+      return new Paginator(this, options);
     });
   };
 

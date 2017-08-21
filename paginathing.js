@@ -1,11 +1,11 @@
 /**
  * jQuery Paginathing
  * Paginate Everything
- * 
+ *
  * @author Alfred Crosby <https://github.com/alfredcrosby>
  * Inspired from http://esimakin.github.io/twbs-pagination/
  */
- 
+
 ;(function($, window, document) {
 
   'use strict';
@@ -36,7 +36,14 @@
       var li = $('<li></li>');
       var a = $('<a></a>').attr('href', '#');
       var cssClass = type === 'number' ? _self.options.liClass : type;
-      var text = type === 'number' ? page : _self.paginationText(type);
+      var text = '';
+      if(type === 'number'){
+        text = page;
+      }else if(type === 'pageNumbers'){ // get the page numbers text
+        text = _self.paginationNumbersText();
+      }else{
+        text =  _self.paginationText(type);
+      }
 
       li.addClass(cssClass);
       li.data('pagination-type', type);
@@ -50,11 +57,16 @@
       return this.options[type + 'Text'];
     },
 
+    paginationNumbersText: function(){
+      var _self = this;
+      return  'Page ' + _self.currentPage + '/' + _self.totalPages ;
+    },
+
     buildPagination: function() {
       var _self = this;
       var pagination = [];
-      var prev = _self.currentPage - 1 < _self.startPage ? _self.startPage : _self.currentPage - 1; 
-      var next = _self.currentPage + 1 > _self.totalPages ? _self.totalPages : _self.currentPage + 1; 
+      var prev = _self.currentPage - 1 < _self.startPage ? _self.startPage : _self.currentPage - 1;
+      var next = _self.currentPage + 1 > _self.totalPages ? _self.totalPages : _self.currentPage + 1;
 
       var start, end;
       var limit = _self.options.limitPagination;
@@ -101,6 +113,11 @@
         pagination.push(_self.pagination('last', _self.totalPages));
       }
 
+      // page numbers
+      if(_self.options.pageNumbers){
+        pagination.push(_self.pagination('pageNumbers', _self.currentPage));
+      }
+
       return pagination;
     },
 
@@ -119,7 +136,7 @@
 
       _self.el.children().hide();
       _self.el.children().slice(startAt, endAt).show();
-      
+
       // Manage active state
       _self.ul.children().each(function() {
         var _li = $(this);
@@ -206,7 +223,8 @@
     liClass: 'page',
     activeClass: 'active',
     disabledClass: 'disabled',
-    insertAfter: null
+    insertAfter: null,
+    pageNumbers: false
   }
 
 }(jQuery, window, document));

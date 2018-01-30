@@ -66,5 +66,5 @@ Your html markup (example)
   activeClass: 'active', // active link class
   disabledClass: 'disable' // disabled link class,
   insertAfter: null //class or id (eg: .element or #element). append the paginator after certain element
-	pageNumbers: false // showing current page number of total pages number, to work properly limitPagination must be true 
+  pageNumbers: false // showing current page number of total pages number, to work properly limitPagination must be true 
 ```

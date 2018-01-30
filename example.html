@@ -66,12 +66,15 @@
 		$('.list-group').paginathing({
 	    perPage: 5,
 	    limitPagination: 9,
-	    containerClass: 'panel-footer'
+	    containerClass: 'panel-footer',
+			pageNumbers: true
 		})
 
 		$('.table tbody').paginathing({
 	    perPage: 2,
-	    insertAfter: '.table'
+	    insertAfter: '.table',
+			limitPagination: true,
+			pageNumbers: true
 		});
 	});
 </script>

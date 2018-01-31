@@ -1,7 +1,7 @@
 # Paginathing
 #### Paginate Everything (support BootstrapCSS)
 
-a dead-simple jQuery plugin for paginate your html elements.
+a dead-simple jQuery plugin for paginate your html elements. [DEMO](https://alfrcr.github.io/paginathing/)
 
 How the plugin's work?
 Originally paginathing.js hide all your selector's children dom. Then shows the dom based on active pages by using jQuery .show()

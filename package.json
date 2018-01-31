@@ -4,7 +4,7 @@
   "description": "jquery pagination plugin for all html elements and bootstrap support",
   "main": "paginathing.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "grunt"
   },
   "repository": {
     "type": "git",

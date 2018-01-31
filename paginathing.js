@@ -11,8 +11,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-;(function($, window, document) {
-
+(function($, window, document) {
   'use strict';
 
   var Paginator = function(element, options) {
@@ -22,10 +21,7 @@
     this.startPage = 1;
     this.currentPage = 1;
     this.totalItems = this.el.children().length;
-    this.totalPages = Math.max(
-      Math.ceil(this.totalItems / this.options.perPage),
-      this.options.limitPagination
-    );
+    this.totalPages = Math.max(Math.ceil(this.totalItems / this.options.perPage), this.options.limitPagination);
     this.container = $('<nav></nav>').addClass(this.options.containerClass);
     this.ul = $('<ul></ul>').addClass(this.options.ulClass);
 
@@ -35,19 +31,19 @@
   };
 
   Paginator.prototype = {
-
     pagination: function(type, page) {
       var _self = this;
       var li = $('<li></li>');
       var a = $('<a></a>').attr('href', '#');
       var cssClass = type === 'number' ? _self.options.liClass : type;
       var text = '';
-      if(type === 'number'){
+      if (type === 'number') {
         text = page;
-      }else if(type === 'pageNumbers'){ // get the page numbers text
+      } else if (type === 'pageNumbers') {
+        // get the page numbers text
         text = _self.paginationNumbersText();
-      }else{
-        text =  _self.paginationText(type);
+      } else {
+        text = _self.paginationText(type);
       }
 
       li.addClass(cssClass);
@@ -62,25 +58,34 @@
       return this.options[type + 'Text'];
     },
 
-    paginationNumbersText: function(){
+    paginationNumbersText: function() {
       var _self = this;
-      return  'Page ' + _self.currentPage + '/' + _self.totalPages ;
+      return 'Page ' + _self.currentPage + '/' + _self.totalPages;
     },
 
     buildPagination: function() {
       var _self = this;
       var pagination = [];
-      var prev = _self.currentPage - 1 < _self.startPage ? _self.startPage : _self.currentPage - 1;
-      var next = _self.currentPage + 1 > _self.totalPages ? _self.totalPages : _self.currentPage + 1;
+      var prev =
+        _self.currentPage - 1 < _self.startPage
+          ? _self.startPage
+          : _self.currentPage - 1;
+      var next =
+        _self.currentPage + 1 > _self.totalPages
+          ? _self.totalPages
+          : _self.currentPage + 1;
 
       var start, end;
       var limit = _self.options.limitPagination;
 
-      if(limit) {
-        if(_self.currentPage <= Math.ceil(limit / 2) + 1) {
+      if (limit) {
+        if (_self.currentPage <= Math.ceil(limit / 2) + 1) {
           start = 1;
           end = limit;
-        } else if (_self.currentPage + Math.floor(limit / 2) >= _self.totalPages) {
+        } else if (
+          _self.currentPage + Math.floor(limit / 2) >=
+          _self.totalPages
+        ) {
           start = _self.totalPages + 1 - limit;
           end = _self.totalPages;
         } else {
@@ -93,32 +98,32 @@
       }
 
       // "First" button
-      if(_self.options.firstLast) {
+      if (_self.options.firstLast) {
         pagination.push(_self.pagination('first', _self.startPage));
       }
 
       // "Prev" button
-      if(_self.options.prevNext) {
+      if (_self.options.prevNext) {
         pagination.push(_self.pagination('prev', prev));
       }
 
       // Pagination
-      for(var i = start; i <= end; i++) {
+      for (var i = start; i <= end; i++) {
         pagination.push(_self.pagination('number', i));
       }
 
       // "Next" button
-      if(_self.options.prevNext) {
+      if (_self.options.prevNext) {
         pagination.push(_self.pagination('next', next));
       }
 
       // "Last" button
-      if(_self.options.firstLast) {
+      if (_self.options.firstLast) {
         pagination.push(_self.pagination('last', _self.totalPages));
       }
 
       // page numbers
-      if(_self.options.pageNumbers){
+      if (_self.options.pageNumbers) {
         pagination.push(_self.pagination('pageNumbers', _self.currentPage));
       }
 
@@ -139,7 +144,10 @@
       var endAt = page * options.perPage;
 
       _self.el.children().hide();
-      _self.el.children().slice(startAt, endAt).show();
+      _self.el
+        .children()
+        .slice(startAt, endAt)
+        .show();
 
       // Manage active state
       _self.ul.children().each(function() {
@@ -148,7 +156,7 @@
 
         switch (type) {
           case 'number':
-            if(_li.data('page') === page) {
+            if (_li.data('page') === page) {
               _li.addClass(options.activeClass);
             }
             break;
@@ -159,10 +167,12 @@
             page === _self.totalPages && _li.toggleClass(options.disabledClass);
             break;
           case 'prev':
-            (page - 1) < _self.startPage && _li.toggleClass(options.disabledClass);
+            page - 1 < _self.startPage &&
+              _li.toggleClass(options.disabledClass);
             break;
           case 'next':
-            (page + 1) > _self.totalPages && _li.toggleClass(options.disabledClass);
+            page + 1 > _self.totalPages &&
+              _li.toggleClass(options.disabledClass);
             break;
           default:
             break;
@@ -170,19 +180,16 @@
       });
 
       // If insertAfter is defined
-      if(options.insertAfter) {
-        _self.container
-          .append(_self.ul)
-          .insertAfter($(options.insertAfter));
+      if (options.insertAfter) {
+        _self.container.append(_self.ul).insertAfter($(options.insertAfter));
       } else {
-        _self.el
-          .after(_self.container.append(_self.ul));
+        _self.el.after(_self.container.append(_self.ul));
       }
     },
 
     handle: function() {
       var _self = this;
-      _self.container.find('li').each(function(){
+      _self.container.find('li').each(function() {
         var _li = $(this);
 
         _li.click(function(e) {
@@ -200,13 +207,13 @@
 
       _self.render(page);
       _self.handle();
-    }
+    },
   };
 
   $.fn.paginathing = function(options) {
     var _self = this;
 
-    return _self.each(function(){
+    return _self.each(function() {
       return new Paginator(this, options);
     });
   };
@@ -226,7 +233,6 @@
     activeClass: 'active',
     disabledClass: 'disabled',
     insertAfter: null,
-    pageNumbers: false
-  }
-
-}(jQuery, window, document));
+    pageNumbers: false,
+  };
+})(jQuery, window, document);

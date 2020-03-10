@@ -6,6 +6,7 @@ a dead-simple jQuery plugin for paginate your html elements. [DEMO](https://alfr
 How the plugin's work?
 Originally paginathing.js hide all your selector's children dom. Then shows the dom based on active pages by using jQuery .show()
 
+With support for Bootstrap 4
 ## Requirements
 - jQuery
 

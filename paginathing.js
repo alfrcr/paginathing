@@ -22,7 +22,7 @@
     this.currentPage = 1;
     this.totalItems = this.el.children().length;
     this.totalPages = Math.max(Math.ceil(this.totalItems / this.options.perPage), this.options.limitPagination);
-    this.container = $('<nav></nav>').addClass(this.options.containerClass);
+    this.container = $('<nav></nav>').addClass(this.options.containerClass).attr('aria-label','Page navigation');
     this.ul = $('<ul></ul>').addClass(this.options.ulClass);
 
     this.show(this.startPage);
@@ -34,7 +34,7 @@
     pagination: function(type, page) {
       var _self = this;
       var li = $('<li></li>');
-      var a = $('<a></a>').attr('href', '#');
+      var a = $('<a></a>').attr('href', '#').addClass('page-link');
       var cssClass = type === 'number' ? _self.options.liClass : type;
       var text = '';
       if (type === 'number') {
@@ -227,9 +227,9 @@
     nextText: '&raquo;',
     firstText: 'First',
     lastText: 'Last',
-    containerClass: 'pagination-container',
-    ulClass: 'pagination',
-    liClass: 'page',
+    containerClass: 'pagination-container mt-4',
+    ulClass: 'pagination flex-wrap justify-content-center',
+    liClass: 'page-item',
     activeClass: 'active',
     disabledClass: 'disabled',
     insertAfter: null,

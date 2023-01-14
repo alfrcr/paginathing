@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>paginathing.js</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Fira Mono', monospace;
+        }
+
+        .list-group > li:nth-child(5n+1) {
+            border-top: 1px solid rgba(0,0,0,.125);
+            border-top-left-radius: .25rem;
+            border-top-right-radius: .25rem;
+        }
+
+        .list-group > li:nth-child(5n+0) {
+            border-bottom-left-radius: .25rem;
+            border-bottom-right-radius: .25rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4 text-center">
+            <h1>paginathing.js</h1>
+            <p>a jQuery plugin to paginate your DOM easily.</p>
+        </div>
+
+        <div class="col-12">
+            <div class="col-lg-8 offset-lg-2 mt-4">
+                <hr class="my-8" />
+            </div>
+        </div>
+
+        <div class="col-lg-8 offset-lg-2 mt-4">
+            <h4>Paginate <code>&lt;tabel&gt;</code></h4>
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Author</th>
+                    <th>Quotes</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Luhut Binsar Pandjaitan</td>
+                    <td>
+                        Karena ini mengubah negeri ini, kita enggak usaha bicara tinggi-tinggilah, kita
+                        OTT-OTT itu kan enggak bagus sebenarnya, buat negeri ini jelek banget.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Joko Widodo</td>
+                    <td>Yo ndak tau kok tanya saya</td>
+                </tr>
+                <tr>
+                    <td>Johny G. Plate</td>
+                    <td>One time password itu harus selalu kita ganti sehingga kita bisa menjaga agar data kita tidak
+                        diterobos.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Megawati Soekarno Putri</td>
+                    <td>Saya tuh sampai mikir, jadi tiap hari ibu-ibu itu apakah hanya menggoreng sampai begitu rebutannya?</td>
+                </tr>
+                <tr>
+                    <td>Megawati Soekarno Putri</td>
+                    <td>Ketika saya mau punya mantu, itu saya udah bilang berdua nih sama anak saya tiga. Awas lho, kalau nyarinya yang kaya tukang bakso</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-lg-8 offset-lg-2">
+            <h4>Paginate <code>&lt;li&gt;</code></h4>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h6 class="panel-title">List of item.</h6>
+                </div>
+                <ul class="list-group">
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script type="text/javascript" src="../dist/paginathing.min.js"></script>
+<!--  <script type="text/javascript" src="../src/test.js"></script>-->
+<script type="text/javascript">
+  jQuery(document).ready(function ($) {
+    const listElement = $('.list-group');
+
+    for (let i = 1; i <= 150; i++) {
+      listElement.append('<li class="list-group-item"> Item ' + i + '</li>');
+    }
+
+    listElement.paginathing({
+      perPage: 5,
+      limitPagination: 9,
+      containerClass: 'panel-footer mt-4',
+      pageNumbers: true,
+      ulClass: 'pagination flex-wrap justify-content-center',
+    })
+
+    $('.table tbody').paginathing({
+      perPage: 2,
+      insertAfter: '.table',
+      pageNumbers: true,
+      ulClass: 'pagination flex-wrap justify-content-center'
+    });
+  });
+</script>
+</body>
+</html>

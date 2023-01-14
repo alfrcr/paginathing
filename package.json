@@ -1,10 +1,13 @@
 {
   "name": "paginathing",
-  "version": "1.0.0",
-  "description": "jquery pagination plugin for all html elements and bootstrap support",
-  "main": "paginathing.js",
+  "version": "1.0.1",
+  "type": "module",
+  "description": "jQuery pagination plugin for all html elements",
+  "main": "dist/paginathing.min.js",
   "scripts": {
-    "build": "grunt"
+    "build": "cross-env NODE_ENV=production rollup -c",
+    "dev": "rollup -c --watch",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -17,16 +20,21 @@
     "pagination",
     "html-elements"
   ],
-  "author": "Alfred Crosby <https://github.com/alfredcrosby>",
+  "author": "Alfred Crosby <https://github.com/alfrcr>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/alfrcr/paginathing/issues"
   },
   "homepage": "https://github.com/alfrcr/paginathing",
   "devDependencies": {
-    "grunt": "^1.0.1",
-    "grunt-cli": "^1.2.0",
-    "grunt-contrib-uglify": "^3.0.1",
-    "grunt-contrib-watch": "^1.0.0"
+    "@rollup/plugin-terser": "^0.3.0",
+    "cross-env": "^7.0.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.1.0",
+    "prettier": "^2.8.3",
+    "rollup": "^3.10.0"
+  },
+  "lint-staged": {
+    "*.{js,css,md}": "prettier --write"
   }
 }

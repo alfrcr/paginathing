@@ -1,11 +1,12 @@
 # Paginathing
 
-#### Paginate Everything (support BootstrapCSS)
+#### Paginate Everything (support BootstrapCSS 5)
 
-a dead-simple jQuery plugin for paginate your html elements. [DEMO](https://alfrcr.github.io/paginathing/)
+a dead-simple jQuery plugin for paginate your html elements. [DEMO](https://paginathing.netlify.app)
 
-How the plugin's work?
-Originally paginathing.js hide all your selector's children dom. Then shows the dom based on active pages by using jQuery .show()
+#### How does the plugin work?
+
+Originally `paginathing.js` hide all your selector's children DOM. Then shows the DOM based on active page by using jQuery .show()
 
 ## Requirements
 
@@ -37,8 +38,11 @@ Your html markup (example)
 ```html
 <!-- jQuery first -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-<!-- paginathing.js -->
-<script type="text/javascript" src="dist/paginathing.min.js"></script>
+<!-- paginathing.min.js -->
+<script
+  type="text/javascript"
+  src="https://cdn.jsdelivr.net/gh/alfrcr/paginathing/dist/paginathing.min.js"
+></script>
 ```
 
 #### Initialize
@@ -58,24 +62,41 @@ Your html markup (example)
 ## Available Options
 
 ```js
-   {
-      perPage: 10, // show item per page
-      limitPagination: false, // false or number. Limiting your pagination number.
-      prevNext: true, // enable previous and next button
-      firstLast: true, // enable first and last button
-      prevText: '&laquo;', // Previous button text
-      nextText: '&raquo;', // Next button text
-      firstText: 'First', // "First button" text
-      lastText: 'Last', // "Last button" text
-      containerClass: 'pagination-container', // extend default container class
-      ulClass: 'pagination', // replace default <ul> class
-      liClass: 'page-item', // replace <li> class
-      linkClass: 'page-link', // replace <a> css class
-      activeClass: 'active', // active link class
-      disabledClass: 'disable', // disabled link class,
-      insertAfter: null, //class or id (eg: .element or #element). append the paginator after certain element
-      pageNumbers: false, // showing current page number of total pages number, to work properly limitPagination must be true
-  }
+{
+  // show item per page
+  perPage: 10,
+  // Limiting your pagination number.
+  // Value could be boolean or positive integer.
+  limitPagination: false,
+  // Enable previous and next button
+  prevNext: true,
+  // Enable first and last button
+  firstLast: true,
+  // Previous button text
+  prevText: '&laquo;',
+  // Next button text
+  nextText: '&raquo;',
+  // "First button" text
+  firstText: 'First',
+  // "Last button" text
+  lastText: 'Last',
+  // Extend default container class
+  containerClass: 'pagination-container',
+  // Extend default <ul> class
+  ulClass: 'pagination',
+  // Extend <li> class
+  liClass: 'page-item',
+  // Extend <a> css class
+  linkClass: 'page-link',
+  // Active link class
+  activeClass: 'active',
+  // disabled link class,
+  disabledClass: 'disable',
+  // class or id (eg: .element or #element). append the paginator after certain element
+  insertAfter: null,
+  // showing current page number of total pages number, to work properly limitPagination must be true
+  pageNumbers: false,
+}
 ```
 
 ## License
